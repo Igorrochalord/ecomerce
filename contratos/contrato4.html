@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Por que me contratar - Igor Rocha</title>
+    <style>
+        /* Estilos CSS para a página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+    
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        .table-container {
+            margin-top: 40px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+    
+        .reasons-list,
+        .feats-list {
+            list-style-type: circle;
+            padding-left: 20px;
+        }
+    
+        .reasons-list li,
+        .feats-list li {
+            margin-bottom: 10px;
+        }
+    
+        .reasons-list li:before,
+        .feats-list li:before {
+            content: "•";
+            margin-right: 5px;
+        }
+    
+        .extra-content {
+            display: none;
+        }
+    
+        .extra-toggle {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    
+    </style>
+    <script>
+        function toggleExtra() {
+            var extraContent = document.getElementById("extra-content");
+            var extraToggle = document.getElementById("extra-toggle");
+            if (extraContent.style.display === "none") {
+                extraContent.style.display = "block";
+                extraToggle.innerHTML = "Esconder";
+            } else {
+                extraContent.style.display = "none";
+                extraToggle.innerHTML = "Mostrar mais";
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Por que me contratar - Igor Rocha</h1>
+        <p>Sou um profissional qualificado e dedicado, com experiência em diversas áreas. Confira abaixo os motivos para
+            me contratar:</p>
+            <div class="table-container">
+                <h2>Experiência Profissional</h2>
+                <table>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Cargo</th>
+                        <th>Período</th>
+                    </tr>
+                    <tr>
+                        <td>Empresa 1</td>
+                        <td>Cargo 1</td>
+                        <td>2018 - 2020</td>
+                    </tr>
+                    <tr>
+                        <td>Empresa 2</td>
+                        <td>Cargo 2</td>
+                        <td>2016 - 2018</td>
+                    </tr>
+                </table>
+            </div>
+        
+            <div class="table-container">
+                <h2>Educação</h2>
+                <table>
+                    <tr>
+                        <th>Instituição</th>
+                        <th>Curso</th>
+                        <th>Ano de Conclusão</th>
+                    </tr>
+                    <tr>
+                        <td>Instituição 1</td>
+                        <td>Curso 1</td>
+                        <td>2015</td>
+                    </tr>
+                    <tr>
+                        <td>Instituição 2</td>
+                        <td>Curso 2</td>
+                        <td>2013</td>
+                    </tr>
+                </table>
+            </div>
+        
+            <div>
+                
+                <head>
+                    <title>Meus Feitos</title>
+                    <style>
+                        .container {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            padding: 20px;
+                        }
+                
+                        .reasons-list {
+                            list-style-type: none;
+                            padding: 0;
+                        }
+                
+                        .reasons-list li {
+                            margin-bottom: 10px;
+                        }
+                
+                        .extra-toggle {
+                            cursor: pointer;
+                            color: blue;
+                            margin-top: 10px;
+                        }
+                
+                        .extra-content {
+                            max-height: 0;
+                            overflow: hidden;
+                            transition: max-height 0.5s ease;
+                        }
+                
+                        .extra-toggle:hover {
+                            text-decoration: underline;
+                        }
+                    </style>
+                    <script>
+                        function toggleExtra() {
+                            var extraContent = document.getElementById("extra-content");
+                            var extraToggle = document.getElementById("extra-toggle");
+                            if (extraContent.style.maxHeight) {
+                                extraContent.style.maxHeight = null;
+                                extraToggle.innerHTML = "Mostrar mais";
+                            } else {
+                                extraContent.style.maxHeight = extraContent.scrollHeight + "px";
+                                extraToggle.innerHTML = "Mostrar menos";
+                            }
+                        }
+                    </script>
+                </head>
+                
+                <body>
+                    <div class="container">
+                        <div>
+                            <h2>Extra</h2>
+                            <ul class="reasons-list">
+                                <li>Experiência comprovada em diversas áreas.</li>
+                                <li>Habilidades em programação, incluindo Python ,Mysql,Terraform,Devops,.</li>
+                                <li>Experiência como palestrante e facilitador de oficinas de programação.</li>
+                                <li>Conhecimento em lógica de programação avançada.</li>
+                                <li>Reconhecido por minhas habilidades mesmo sendo um profissional júnior.</li>
+                            </ul>
+                            <div class="extra-content" id="extra-content">
+                                <h2>Mais informações</h2>
+                                <ul class="feats-list">
+                                    <li>Domínio em frameworks de desenvolvimento web, como Django e Flask.</li>
+                                    <li>Experiência com integração de APIs e desenvolvimento de serviços RESTful.</li>
+                                    <li>Conhecimento em banco de dados, incluindo modelagem, consultas e otimizações.</li>
+                                    <li>Habilidades em automação de infraestrutura usando ferramentas como Terraform e Ansible.</li>
+                                    <li>Experiência em práticas de DevOps, incluindo integração contínua e entrega contínua (CI/CD).</li>
+                                    <li>Participação em projetos de alta complexidade, demonstrando habilidades analíticas e resolutivas.</li>
+                                </ul>
+                            </div>
+                            <div class="extra-toggle" id="extra-toggle" onclick="toggleExtra()">Mostrar mais</div>
+                        </div>
+                    </div>
+                </body>
+                
+                </html>

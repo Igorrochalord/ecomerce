@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rede Portela de Supermercado</title>
+  </head>
+  <body>
+    <h1>Rede Portela de Supermercado</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="codigo_produto">Codigo do produto:</label><br>
+      <input type="text" id="codigo_produto" name="codigo_produto"><br>
+      <label for="nome_produto">Nome do produto:</label><br>
+      <input type="text" id="nome_produto" name="nome_produto"><br>
+      <label for="preco">Preço:</label><br>
+      <input type="

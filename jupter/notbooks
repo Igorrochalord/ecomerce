@@ -1,0 +1,139 @@
+#parte de testes
+
+import cv2
+
+cap = cv2.VideoCapture(0) # 0 para a câmera padrão do sistema
+
+if not cap.isOpened():
+    print("Erro ao abrir a câmera")
+else:
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    print(f"Tamanho da câmera: {width}x{height}")
+    while True:
+        ret, frame = cap.read()
+        if ret:
+            cv2.imshow('frame', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        else:
+            print("Erro ao capturar quadro")
+
+cap.release()
+cv2.destroyAllWindows()
+
+
+#-----------------------------------------------------------------------------------------------------------------------------#
+
+#teste de conectividae falho por falta de tamanho nasas propostaçoes da camera , fazer teste apos o scaneer
+
+import pandas as pd
+import cv2
+import pyzbar.pyzbar as pyzbar
+from time import sleep
+from tqdm import tqdm
+
+# lista vazia que vai receber os dados
+codigo = []
+nome_produto = []
+preco = []
+quantidades = []
+categorias = []
+
+# entrada do usuário
+user = input("Digite seu nome:")
+cod = int(input("Digite seu registro:"))
+
+def ler_codigo_de_barras(imagem):
+    # conversão da imagem para escala de cinza
+    imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+    # detecção dos códigos de barras na imagem
+    codigos = pyzbar.decode(imagem_cinza)
+    # iteração sobre os códigos detectados
+    for codigo in codigos:
+        # conversão do código para string
+        codigo_decodificado = codigo.data.decode('utf-8')
+        # exibição do código decodificado
+        print(f"Código de barras: {codigo_decodificado}")
+        # busca do produto correspondente ao código decodificado
+        for i in range(len(codigo)):
+            if codigo_decodificado == str(codigo[i]):
+                print(f"Nome do produto: {nome_produto[i]}")
+                print(f"Preço: {preco[i]}")
+                print(f"Quantidade em estoque: {quantidades[i]}")
+                break
+
+while True:
+    # exibição do menu
+    print("======= Rede Portela de Supermercado =======")
+    print("1 - Cadastrar Produto")
+    print("2 - Exibir Produtos em Estoque")
+    print("3 - Sair")
+    print("4 - Digitalizar Produto")
+
+    # entrada da opção do usuário
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        # cadastro de produto
+        passando = int(input("Código do produto: "))
+        nomep = input("Nome do produto: ")
+        preci = float(input("Preço: "))
+        quantidade = int(input("Quantidade do produto: "))
+        categoria = input("Categoria do produto: ")
+
+        codigo.append(passando)
+        nome_produto.append(nomep)
+        preco.append(preco)
+        quantidades.append(quantidade)
+        categorias.append(categoria)
+
+        print("Produto cadastrado com sucesso!")
+
+    elif opcao == "2":
+        # exibição dos produtos em estoque
+        dados = {'Código do Produto': codigo,
+                 'Nome do Produto': nome_produto,
+                 'Preço': preco,
+                 'Quantidade em Estoque': quantidades,
+                 'Categoria': categorias}
+
+        mercado = pd.DataFrame(dados)
+       
+        for i in range(len(mercado)):
+            if mercado.loc[i, 'Quantidade em Estoque'] <= 10:
+                print(f"Atenção!mercado:\n{mercado}")
+        print(mercado)
+
+    elif opcao == "3":
+            # saída do programa
+            print("Saindo...")
+            sleep(2)
+            break
+
+    elif opcao == "4":
+            # digitalização do código de barras
+            cap = cv2.VideoCapture(0)
+            # exibição da mensagem para o usuário posicionar o produto
+            print("Posicione o produto em frente à câmera...")
+            sleep(2)
+            while True:
+                ret, frame = cap.read()
+                # exibição da imagem capturada pela câmera
+                cv2.imshow('frame', frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+                # chamada da função para leitura do código de barras
+                ler_codigo_de_barras(frame)
+            # liberação dos recursos
+            cap.release()
+            cv2.destroyAllWindows()
+
+    else:
+            # mensagem de opção inválida
+            print("Opção inválida. Digite novamente.")
+            
+#=-===========================================================================  =================================#
+
+
+#parte com adcional de comanda de adciçao ao banco
